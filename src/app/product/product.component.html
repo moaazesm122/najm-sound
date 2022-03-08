@@ -1,0 +1,47 @@
+<div class="container-fluid">
+
+    <button routerLink="/products/add" class="btn btn-primary m-1">
+        Add Product
+    </button>
+
+    <table class="table">
+
+
+        <thead class="thead-dark">
+            <tr>
+
+
+                <th scope="col"></th>
+
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of pro">
+                <th scope="row"></th>
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+
+                <td>{{product.category.name}}</td>
+                <td>{{product.price}}</td>
+                <td>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+
+                        <button class="btn btn-outline-success" routerLink="/products/edit/{{product.id}}"><i class="fa fa-edit" aria-hidden="true"></i></button> <button class="btn btn-outline-danger" (click)="deleteProduct(product)"> <i class="fa fa-trash" aria-hidden="true"></i> </button>
+                    </div>
+                </td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+
+
+
+</div>

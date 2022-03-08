@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+    <button routerLink="/categories/add" class="btn btn-primary m-1">
+        Add Category
+    </button>
+
+    <table class="table">
+
+
+        <thead class="thead-dark">
+            <tr>
+
+
+                <th scope="col"></th>
+
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+
+                <th scope="col">action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of cat">
+                <th scope="row"></th>
+                <td>{{category.id}}</td>
+                <td>{{category.name}}</td>
+                <td>{{category.description}}</td>
+
+                <td>
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+
+                        <button class="btn btn-outline-success" routerLink="/categories/edit/{{category.id}}"><i class="fa fa-edit" aria-hidden="true"></i></button> <button class="btn btn-outline-danger" (click)="deleteCategory(category)"> <i class="fa fa-trash" aria-hidden="true"></i> </button>
+                    </div>
+                </td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+
+
+
+</div>
