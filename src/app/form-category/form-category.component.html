@@ -2,7 +2,7 @@
 
 
 
-    <mat-form-field class="col-5">
+    <mat-form-field class=" mt-4 col-5">
         <mat-label>
             name
         </mat-label>
@@ -12,26 +12,27 @@
         </mat-error>
     </mat-form-field>
     <div>
-        <label></label>
+
     </div>
-    <div class="form-group col-5">
-        <label><h6>description</h6></label>
+    <mat-form-field class="mt-4 col-5">
+        <mat-label>description</mat-label>
 
 
-        <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': f.description.touched && f.description.invalid }" />
-        <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger">
-            <div *ngIf="f.description.touched && f.description.invalid"> the description is required</div>
-        </div>
-    </div>
+        <input matInput type="text" formControlName="description" />
+        <mat-error *ngIf="f.description.touched && f.description.invalid">
+            the description is required
+        </mat-error>
+    </mat-form-field>
     <div>
         <label></label>
     </div>
 
     <div class="form-group m-1">
-        <button [disabled]="loading || clicked || form.invalid" class="btn btn-primary">
+
+        <button mat-raised-button color="primary" [disabled]="loading || clicked || form.invalid">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Save
         </button>
-        <a routerLink="/categories" class="btn btn-link">Cancel</a>
+        <a mat-stroked-button color="primary" routerLink="/categories">Cancel</a>
     </div>
 </form>

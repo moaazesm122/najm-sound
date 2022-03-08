@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from './../service/category.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../model/product';
 import { Category } from '../model/category';
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-form-product',
   templateUrl: './form-product.component.html',
-  styleUrls: ['./form-product.component.css']
+  styleUrls: ['./form-product.component.scss']
 })
 export class FormProductComponent implements OnInit {
   loading:false
@@ -19,6 +19,7 @@ export class FormProductComponent implements OnInit {
   pro:Product[]=[]
   cats:Category[]=[]
   clicked=false;
+  selected: string;
   type:boolean
 
    constructor(private frmBu: FormBuilder,private proSerivce:ProductService,private route: Router,private CatService:CategoryService,private toast:ToastrService,private router:ActivatedRoute) { }
@@ -26,12 +27,15 @@ export class FormProductComponent implements OnInit {
    ngOnInit(): void {
      this.id= this.router.snapshot.params['id']
      this.type= !this.id
+     
      this.frm= this.frmBu.group({
+      
        id:[0],
        name:['',Validators.required],
   
        categoryId:['',Validators.required],
-       price:[,[Validators.required,Validators.min(0)]]
+       price:[,[Validators.required,Validators.min(0)]],
+       
      });
 
 this.getAllCategory()

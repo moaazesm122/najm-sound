@@ -1,72 +1,69 @@
 <form [formGroup]="frm" class="container-fluid" (ngSubmit)="onSubimt()">
-    <div>
-        <label></label>
-    </div>
-    <div class="form-group col-5">
-        <label for="">
-            <h6>Name</h6>
-        </label>
-        <input formControlName="name" class="form-control" placeholder="enter name of Product">
-        <div *ngIf="frm.get('name').invalid &&  frm.get('name').touched" class="alert alert-danger">
 
-            this field is required
+    <mat-form-field class="mt-4 col-5">
+        <mat-label>
+            Name
+        </mat-label>
+        <input matInput type="text" formControlName="name" />
+        <mat-error *ngIf="frm.get('name').touched && frm.get('name').invalid">
+            the Name is required
+        </mat-error>
 
-        </div>
-
-    </div>
+    </mat-form-field>
 
 
-    <label for="category"></label>
+    <div></div>
 
 
-    <div class="form-group col-5">
+    <mat-form-field class="mt-4 col-5">
 
-        <label for="category">
-                <h6>Category</h6>
-            </label>
-        <select formControlName="categoryId" class="form-control">
-                <option *ngFor="let category of cats" [ngValue]="category.id">{{category.name}}</option>
+        <mat-label>
+            Category
+        </mat-label>
+        <mat-select [(value)]="selected" formControlName="categoryId" required>
+            <mat-option *ngFor="let category of cats" [value]="category.id">{{category.name}}</mat-option>
 
-            </select>
-        <div *ngIf="frm.get('categoryId').touched && frm.get('categoryId').invalid" class="alert alert-danger"> the category is required</div>
+        </mat-select>
+        <mat-error *ngIf="frm.get('categoryId').touched && frm.get('categoryId').invalid"> the category is required
+        </mat-error>
 
-    </div>
+    </mat-form-field>
+
+    <div></div>
 
 
-    <div class="form-group col-5">
-        <label for=""></label>
 
-    </div>
-    <div class="form-group col-5">
-        <label for="">
-                <h6>price</h6>
-            </label>
-        <input formControlName="price" class="form-control" placeholder="enter price of Product" type="number">
+    <mat-form-field class="mt-4 col-5">
+        <mat-label for="">
+            price
+        </mat-label>
+        <input matInput formControlName="price" placeholder="enter price of Product" type="number">
+
         <ng-container *ngIf="frm.get('price').touched && frm.get('price').invalid || frm.get('price').errors">
 
-            <div *ngIf="frm.get('price').errors.min" class="alert alert-danger">
+            <mat-error *ngIf="frm.get('price').errors.min">
                 the number you enterd is less than 0
-            </div>
-            <div *ngIf="frm.get('price').touched && frm.get('price').invalid" class="alert alert-danger">
+            </mat-error>
+            <mat-error *ngIf="frm.get('price').touched && frm.get('price').invalid">
                 the field is required
-            </div>
+            </mat-error>
 
 
 
         </ng-container>
-    </div>
+    </mat-form-field>
 
     <div>
-        <label></label>
+
     </div>
 
 
-    <div class="form-group col-5">
-        <button [disabled]="loading || clicked || frm.invalid" class="btn btn-primary">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                Save
-            </button>
-        <a routerLink="/products" class="btn btn-link">Cancel</a>
+    <div class="mt-4 col-5">
+        <button mat-raised-button color="primary" [disabled]="loading || clicked || frm.invalid" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a mat-stroked-button color="primary" routerLink="/products">Cancel</a>
     </div>
 
 </form>
