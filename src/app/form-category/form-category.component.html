@@ -27,12 +27,15 @@
         <label></label>
     </div>
 
+
+
+
+
     <div class="form-group m-1">
 
-        <button mat-raised-button color="primary" [disabled]="loading || clicked || form.invalid">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Save
-        </button>
-        <a mat-stroked-button color="primary" routerLink="/categories">Cancel</a>
+        <div mat-dialog-action [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close> close</button>
+            <button mat-raised-button color="primary" style="margin-left: 8px;"> {{actionBtn}}</button>
+        </div>
     </div>
 </form>
