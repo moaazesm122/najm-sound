@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
 import { FormCategoryComponent } from './form-category/form-category.component';
 import { ProductComponent } from './product/product.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
@@ -18,7 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { CategoryFormDialogComponent } from './category-form-dialog/category-form-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { CategoryFormDialogComponent } from './category-form-dialog/category-for
     HomeComponent,
 
     FormProductComponent,
-     CategoryFormDialogComponent,
+    
+     
 
   ],
   imports: [
@@ -44,7 +45,8 @@ import { CategoryFormDialogComponent } from './category-form-dialog/category-for
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

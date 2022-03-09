@@ -1,8 +1,10 @@
+import { Category } from './../model/category';
+import { FormCategoryComponent } from './../form-category/form-category.component';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Category } from '../model/category';
-import { CategoryService } from '../service/category.service';
 
+import { CategoryService } from '../service/category.service';
+import {MatDialog,MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -13,7 +15,9 @@ export class CategoryComponent implements OnInit {
   cat:Category[]=[];
   id=0;
 
-  constructor(private catService:CategoryService,private toast:ToastrService ){
+  
+
+  constructor(private dialog:MatDialog,private catService:CategoryService,private toast:ToastrService ){
     
   }
 
@@ -22,6 +26,25 @@ export class CategoryComponent implements OnInit {
 
   }
 
+  editCategory(Category:any){
+       this.dialog.open(FormCategoryComponent,{
+         width:'40%',
+         height:'35%',
+         data:Category
+       })
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(FormCategoryComponent,{
+      width:'40%',
+      height:'35%',  
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+     
+      this.getAllCategory()
+    });
+  }
 
   getAllCategory(){
     this.catService.getAllCategories().subscribe(res =>{
