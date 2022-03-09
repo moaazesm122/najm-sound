@@ -41,8 +41,7 @@ export class CategoryComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-     
-      this.getAllCategory()
+      this.cat = [...this.cat,result];
     });
   }
 

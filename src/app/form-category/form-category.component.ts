@@ -36,7 +36,7 @@ export class FormCategoryComponent implements OnInit {
 
 
     ngOnInit() {
-        this.id = this.editData.id;
+        this.id = this.editData?.id;
         this.type = !this.id;
 
 
@@ -95,7 +95,7 @@ export class FormCategoryComponent implements OnInit {
                 this.router.navigate([`${'categories'}`])
                 this.toast.success('added succefully')
                 this.loading = false
-                this.dialogRef.close('save')
+                this.dialogRef.close(res)
             }, err => {
                 this.toast.error('error')
                 this.clicked = false
