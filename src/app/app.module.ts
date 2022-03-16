@@ -18,7 +18,11 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeComponent,
 
     FormProductComponent,
+      LoginComponent,
+      SignupComponent,
     
      
 
@@ -47,6 +53,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

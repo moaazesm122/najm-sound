@@ -89,7 +89,8 @@ updateProduct(){
                this.route.navigate([`${'products'}`])
                this.clicked=true
                this.toast.success('updated succefully')
-  },
+               this.frm.reset()
+  },                                                             
   err =>{
          this.clicked=false
          this.toast.error('error')

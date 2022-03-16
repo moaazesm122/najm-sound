@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>
+                        Sign-up
+                    </h1>
+                </div>
+                <hr>
+
+                <form [formGroup]="frmSignup" (ngSubmit)="signup()">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Name</label>
+                        <input formControlName="name" type="text" class="form-control" id="" aria-describedby="emailHelp">
+
+                        <ng-container *ngIf="frmSignup.get('name').touched && frmSignup.get('name').invalid">
+
+
+                            <mat-error *ngIf="frmSignup.get('name').touched && frmSignup.get('name').invalid">
+                                name is required
+                            </mat-error>
+
+                        </ng-container>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Mobile Number</label>
+                        <input formControlName="mobile" type="number" class="form-control" id="" aria-describedby="emailHelp">
+                        <ng-container *ngIf="frmSignup.get('mobile').touched && frmSignup.get('mobile').valid">
+                            <mat-error *ngIf="frmSignup.get('mobile').touched && frmSignup.get('mobile').valid">
+                                mobile is required
+                            </mat-error>
+                        </ng-container>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Email address</label>
+                        <input formControlName="email" type="email" class="form-control" id="" aria-describedby="emailHelp">
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Signup</button>
+                </form>
+                <a routerLink="/login"> Already you have account, Click to login</a>
+            </div>
+        </div>
+    </div>
+
+</div>

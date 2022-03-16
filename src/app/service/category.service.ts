@@ -18,19 +18,19 @@ export class CategoryService {
 
 
 
-  deleteCategory(cat: Category): Observable<Category> {
-    return this.http.delete<Category>(this.url + '/' + cat.id)
+  deleteCategory(id: number): Observable<Category> {
+    return this.http.delete<Category>(this.url + '/' + id)
   }
 
 
 
 
-  updateCat(id: number, cat: Category): Observable<any> {
-    return this.http.put(`${this.url}/${id}`, cat);
+  updateCat(id: number, data: any): Observable<any> {
+    return this.http.put(`${this.url}/${id}`, data);
   }
 
-  addCategort(cat: Category): Observable<Category> {
-    return this.http.post<Category>(this.url, cat)
+  addCategort(data: any): Observable<Category> {
+    return this.http.post<Category>(this.url, data)
   }
 
 
@@ -40,8 +40,8 @@ export class CategoryService {
   }
 
 
-  updateCategory(id: number, cat: Category): Observable<any> {
-    return this.http.put(`${this.url}/${id}`, cat)
+  updateCategory(id: number, data:any): Observable<any> {
+    return this.http.put(`${this.url}/${id}`, data)
   }
 
 }

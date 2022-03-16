@@ -15,18 +15,19 @@ export class ProductComponent implements OnInit {
   cat:Category[]=[];
   id=0;
 
-  constructor(private catService:CategoryService,private toast:ToastrService,private proService:ProductService ){
+  constructor(private catService:CategoryService,private toast:ToastrService,private proService:ProductService){
     
   }
 
   ngOnInit(): void {
+  
     this.getAllProduct();
   this.getAllCategory();
   
   }
 
   getAllProduct(){
-    this.proService.getAllProducts().subscribe(res =>{
+    this.proService.getAllProducts().subscribe(res  =>{
     this.pro= res
     },
     err =>{

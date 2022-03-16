@@ -21,8 +21,9 @@ export class FormCategoryComponent implements OnInit {
     id = 0;
     type: boolean;
     loading = false;
-
+    cats: Category[] = []
     clicked = false
+    actionBtn:string ="save"
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -38,7 +39,7 @@ export class FormCategoryComponent implements OnInit {
     ngOnInit() {
         this.id = this.editData?.id;
         this.type = !this.id;
-
+         this.getAll()
 
         this.form = this.formBuilder.group({
             id: [0],
@@ -47,9 +48,10 @@ export class FormCategoryComponent implements OnInit {
 
         });
 
-        if (this.editData) {
+    
+     if (this.editData) {
 
-            this.form.controls['id'].setValue(this.editData.id),
+                this.actionBtn="update"
                 this.form.controls['name'].setValue(this.editData.name),
                 this.form.controls['description'].setValue(this.editData.description)
         }
@@ -57,21 +59,30 @@ export class FormCategoryComponent implements OnInit {
 
         if (!this.type) {
 
-             this.catService.getCat(this.id).subscribe(res => {
-                 this.id = res['id']
-                
-                 this.form.get('id')?.setValue(res['id']);
-                 this.form.get('name')?.setValue(res['name']);
-                 this.form.get('description')?.setValue(res['description'])
-             },
-                 err => {
+            this.catService.getCat(this.id).subscribe(res => {
+                this.id = res['id']
 
-                 }
-             )
+                this.form.get('id')?.setValue(res['id']);
+                this.form.get('name')?.setValue(res['name']);
+                this.form.get('description')?.setValue(res['description'])
+            },
+                err => {
+
+                }
+            )
 
         }
 
 
+    }
+
+    getAll(){
+        this.catService.getAllCategories().subscribe(res =>{
+
+        },
+        error =>{
+
+        })
     }
 
     get f() { return this.form.controls; }
@@ -89,13 +100,16 @@ export class FormCategoryComponent implements OnInit {
 
     addCategory() {
         if (!this.editData) {
+            if(this.form.valid){
 
             this.clicked = true
             this.catService.addCategort(this.form.value).subscribe(res => {
                 this.router.navigate([`${'categories'}`])
                 this.toast.success('added succefully')
                 this.loading = false
-                this.dialogRef.close(res)
+                this.dialogRef.close('save')
+                this.getAll()
+
             }, err => {
                 this.toast.error('error')
                 this.clicked = false
@@ -105,15 +119,19 @@ export class FormCategoryComponent implements OnInit {
             this.updateCategory()
         }
     }
-
+    }
     updateCategory() {
         this.clicked = true
-        this.catService.updateCat(this.id, this.form.value).subscribe(res => {
-            this.router.navigate([`${'categories'}`])
+        this.catService.updateCat(this.editData.id, this.form.value).subscribe(res => {
+       
             this.clicked = true
+        
             this.loading = false
             this.toast.success('updated succefully')
-            this.dialogRef.close()
+
+           this.dialogRef.close("update")
+          this.getAll()
+
         },
             err => {
                 this.clicked = false
