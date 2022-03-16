@@ -23,6 +23,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { SummaryPipe } from './summary.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SignupComponent } from './signup/signup.component';
     FormProductComponent,
       LoginComponent,
       SignupComponent,
+      SummaryPipe,
     
      
 
