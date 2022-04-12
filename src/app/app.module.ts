@@ -1,63 +1,40 @@
 
+import { ArtistListViewModel } from './model/ArtistListViewModel';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './category/category.component';
-import { FormCategoryComponent } from './form-category/form-category.component';
-import { ProductComponent } from './product/product.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
-import { ToastrModule } from 'ngx-toastr';
-import { HomeComponent } from './home/home.component';
-import { FormProductComponent } from './form-product/form-product.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+
+import { MatCardModule } from '@angular/material/card';
+import { AlbmusComponent } from './albmus/albmus.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
+import { ArtistCardComponent } from './artist-card/artist-card.component';
 import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { SummaryPipe } from './summary.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { ArtistListComponent } from './artist-list/artist-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
-    FormCategoryComponent,
-    ProductComponent,
 
-    HomeComponent,
+    AlbmusComponent,
 
-    FormProductComponent,
-      LoginComponent,
-      SignupComponent,
-      SummaryPipe,
-    
-     
-
+    ArtistCardComponent,
+    ArtistListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    MatFormFieldModule,
-    MatInputModule,
+    MatCardModule,
     MatButtonModule,
-    MatSelectModule,
+    MatToolbarModule,
     MatIconModule,
-    MatDialogModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
