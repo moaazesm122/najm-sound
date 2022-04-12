@@ -1,9 +1,9 @@
 import { ArtistService } from './../service/artist.service';
 import { ArtistListViewModel } from './../model/ArtistListViewModel';
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-artist-card',
@@ -13,10 +13,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ArtistCardComponent implements OnInit {
 
   @Input() artist: ArtistListViewModel;
+  @Output() newItemEvent = new EventEmitter<string>();
 
-
-  constructor() { }
-
+  constructor(private albmuService:ArtistService) { }
   ngOnInit() {
   }
 
@@ -28,7 +27,29 @@ export class ArtistCardComponent implements OnInit {
       else
       return "";
   }
+   onClick(){
+    console.log('clicked')
 
+  this.newItemEvent.emit
+ 
+}
+
+  addLike(){
+    if (this.artist.liked) {
+      this.albmuService.UnLike(this.artist).subscribe()
+      this.artist.likesCount--
+      if(this.artist.likesCount=0){
+
+      }
+      }
+
+      
+      
+      }
+
+      
+  }
+  
 
 
 }

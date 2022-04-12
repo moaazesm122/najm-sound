@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card ((click)="onClick()">
     <mat-card-title>{{artist.name}}</mat-card-title>
     <mat-card-actions>
         <button mat-icon-button>
@@ -11,12 +11,10 @@
             {{artist.albumsCount}}
         </button>
 
-        <button mat-icon-button color="{{likeColor}}">
+        <button mat-icon-button color="{{likeColor}}" (click)="onClick()">
             <mat-icon>favorite</mat-icon>
             {{artist.likesCount}}
         </button>
-
-
     </mat-card-actions>
 </mat-card>
 
