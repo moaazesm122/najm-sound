@@ -3,6 +3,7 @@
 import { ArtistService } from './../service/artist.service';
 import { ArtistListViewModel } from './../model/ArtistListViewModel';
 import { Component,  OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-artist-list',
@@ -11,13 +12,13 @@ import { Component,  OnInit } from '@angular/core';
 })
 export class ArtistListComponent implements OnInit {
 
-  artists:ArtistListViewModel[];
+  artists$:Observable<ArtistListViewModel[]>;
  
   constructor(private service: ArtistService) { }
 
   ngOnInit(): void {
  
-    this.service.getAllArtis()
+   this.artists$= this.service.getAllArtis()
   }
 
 }

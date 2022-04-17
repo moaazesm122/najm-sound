@@ -19,11 +19,12 @@ export class SongsService {
 
   }
 
-  addLike(song: SongListViewModel): Observable<SongListViewModel> {
-    return this.http.post<SongListViewModel>(this.url+'Songs/Like', song.id)
+  addLike(id): Observable<any> {
+    return this.http.post<any>(this.url+'/Like/' + id,{})
   }
-  UnLike(song: SongListViewModel): Observable<SongListViewModel> {
-    return this.http.post<SongListViewModel>(this.url+'Songs/UnLike', song.id)
+  UnLike(id): Observable<any> {
+    return this.http.post<any>(this.url+'/UnLike/'+ id,{})
   }
+
 
 }

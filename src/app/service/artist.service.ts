@@ -22,11 +22,11 @@ export class ArtistService {
 
   }
 
-    addLike(art: ArtistListViewModel): Observable<ArtistListViewModel> {
-    return this.http.post<ArtistListViewModel>(this.url+'/Like', art.id)
+    addLike(id): Observable<any> {
+    return this.http.post<any>(this.url+'/Like/' + id,{})
   }
-  UnLike(art: ArtistListViewModel): Observable<ArtistListViewModel> {
-    return this.http.post<ArtistListViewModel>(this.url+'/UnLike', art.id)
+  UnLike(id): Observable<any> {
+    return this.http.post<any>(this.url+'/UnLike/'+ id,{})
   }
 
 

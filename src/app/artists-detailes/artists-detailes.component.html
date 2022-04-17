@@ -1,5 +1,13 @@
-<div class="row">
-    <app-artist-card [artist]="artist" class="col-md-6 col-sm-12 mb-3"></app-artist-card>
-    <app-card-album *ngFor="let album of album" [album]="artist.album" class="col-md-6 col-sm-12 mb-3"></app-card-album>
-    <app-card-song *ngFor="let song of song" [song]="artist.song" class="col-md-6 col-sm-12 mb-3"></app-card-song>
+<div class="row" *ngIf="artist">
+    <app-artist-card [artist]="artist" class="col-12 mb-3"></app-artist-card>
+    <div class="col-md-6 col-sm-12 mb-3">
+        Albums
+        <app-card-album *ngFor="let album of artist.albums" [album]="album"></app-card-album>
+
+    </div>
+    <div class="col-md-6 col-sm-12 mb-5 mt-10">
+        Songs
+        <app-card-song *ngFor="let song of artist.songs" [song]="song"></app-card-song>
+
+    </div>
 </div>

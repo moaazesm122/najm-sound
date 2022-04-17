@@ -1,6 +1,6 @@
 import { SongsService } from './../service/songs.service';
 import { SongViewModel } from './../model/SongViewModel';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-song',
@@ -8,20 +8,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-song.component.scss']
 })
 export class CardSongComponent implements OnInit {
- song:SongViewModel
- id:any
+  @Input() song:SongViewModel
+
   constructor(private songService:SongsService) { }
 
   ngOnInit(): void {
-    this.songService.getSongById(this.song.id).subscribe(res=>{
+    this.songService.getSongById
 
-    })
-    this.songService.addLike(this.id).subscribe(res=>{
-
-    },)
-    this.songService.UnLike(this.id).subscribe(res=>{
-
-    },)
   }
 
+  onFavirteClick() {
+     if (this.song.liked){
+     this.songService.addLike(this.song.id).subscribe(res =>{
+       this.song.likesCount++
+     });
+     }
+     else {
+     this.songService.UnLike(this.song.id).subscribe(res=>{
+    this.song.likesCount--
+     });
+     }
+  }
+
+  get likeColor() {
+    if (this.song.liked)
+      return "warn";
+    else
+      return "";
+  }
+
+  
 }
+

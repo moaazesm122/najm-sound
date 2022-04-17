@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-artist-card',
   templateUrl: './artist-card.component.html',
@@ -13,24 +14,36 @@ import { Router } from '@angular/router';
 })
 export class ArtistCardComponent implements OnInit {
 
-  @Input() artist;
+  @Input() artist: ArtistListViewModel;
   @Output() c = new EventEmitter()
 
-  constructor(private artistService: ArtistService, private router: Router) { }
+  constructor(private artistService: ArtistService) { }
   ngOnInit() {
-    console.log(this.artist)
+
     this.detailsRote = ["/artistDetailes", this.artist?.id]
   }
   detailsRote;
   onFavirteClick(event) {
     event.stopPropagation()
-    if (this.artistService.addLike) {
-      this.artist.likesCount++
+
+    if (!this.artist.liked) {
+      this.artistService.addLike(this.artist.id).subscribe(res => {
+        this.artist.likesCount++
+        this.likeColor=="warn"
+      }
+
+      );
+
     }
     else {
-      this.artist.likesCount--
-    }
 
+      this.artistService.UnLike(this.artist.id).subscribe(res => {
+        this.artist.likesCount--
+        this.likeColor==""
+    
+        
+      });
+    }
   }
 
   get likeColor() {

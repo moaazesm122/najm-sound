@@ -1,9 +1,7 @@
-import { AlbumsService } from './../service/albums.service';
-import { SongsService } from './../service/songs.service';
+
 import { ArtistService } from './../service/artist.service';
 import { ActivatedRoute } from '@angular/router';
-import { SongViewModel } from './../model/SongViewModel';
-import { AlbumViewModel } from './../model/AlbumViewModel';
+
 import { ArtistListViewModel } from './../model/ArtistListViewModel';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,22 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistsDetailesComponent implements OnInit {
   artist:ArtistListViewModel
- album:AlbumViewModel
- song:SongViewModel
   id;
 
-  constructor(private router:ActivatedRoute,private artistService:ArtistService,
-    private albumService: AlbumsService,private SongService:SongsService) { }
+  constructor(private router:ActivatedRoute,private artistService:ArtistService) { }
 
   ngOnInit(): void {
     this.id= this.router.snapshot.params['id']
     console.log(this.id)
-    this.artistService.getAllArtis()
-    this.albumService.getAlbumById(this.id)
-    this.SongService.getSongById(this.id)
-    this.SongService.addLike(this.id)
-    this.SongService.UnLike(this.id)
-
-  }
+    this.artistService.getArtistById(this.id).subscribe(a=>{
+      this.artist = a;
+    });
+    }
 
 }

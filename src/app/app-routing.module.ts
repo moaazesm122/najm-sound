@@ -1,7 +1,6 @@
-import { ArtistsDetailesComponent } from './artists-detailes/artists-detailes.component';
+import { Routes } from '@angular/router';
 import { ArtistListComponent } from './artist-list/artist-list.component';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ArtistsDetailesComponent } from './artists-detailes/artists-detailes.component';
 
  export const routes: Routes = [
   {
@@ -13,9 +12,3 @@ import { RouterModule, Routes } from '@angular/router';
     component:ArtistsDetailesComponent
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

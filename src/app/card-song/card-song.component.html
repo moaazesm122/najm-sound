@@ -1,14 +1,18 @@
-<mat-card>
-    <mat-card-title>{{song.name}}</mat-card-title>
-    <mat-card-title>{{song.artist}}</mat-card-title>
-    <mat-card-title>{{song.about}}</mat-card-title>
-    <mat-card-title>{{song.releaseYear}}</mat-card-title>
+<div>
+    <mat-card>
+        <mat-card-title>{{song.name}}</mat-card-title>
+        <mat-card-title>{{song.artist}}</mat-card-title>
+        <mat-card-title>{{song.about}}</mat-card-title>
+        <mat-card-title>{{song.releaseYear}}</mat-card-title>
+        <mat-card-title>{{song.length}}</mat-card-title>
 
-    <mat-card-actions>
-        <button mat-icon-button>
+        <mat-card-actions>
+            <button mat-icon-button (click)="onFavirteClick()" mat-icon-button color="{{likeColor}}">
             <mat-icon>favorite</mat-icon>
-           Like Count
+         {{song.likesCount}}
         </button>
 
-    </mat-card-actions>
-</mat-card>
+        </mat-card-actions>
+    </mat-card>
+
+</div>
