@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class ArtistCardComponent implements OnInit {
 
   @Input() artist: ArtistListViewModel;
-  @Output() c = new EventEmitter()
+  @Output("c") c = new EventEmitter()
 
   constructor(private artistService: ArtistService) { }
   ngOnInit() {
