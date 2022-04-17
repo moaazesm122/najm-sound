@@ -16,6 +16,9 @@ import { ArtistCardComponent } from './artist-card/artist-card.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ArtistListComponent } from './artist-list/artist-list.component';
+import { ArtistsDetailesComponent } from './artists-detailes/artists-detailes.component';
+import { CardSongComponent } from './card-song/card-song.component';
+import { CardAlbumComponent } from './card-album/card-album.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ArtistListComponent } from './artist-list/artist-list.component';
     AlbmusComponent,
 
     ArtistCardComponent,
-    ArtistListComponent
+    ArtistListComponent,
+    ArtistsDetailesComponent,
+    CardSongComponent,
+    CardAlbumComponent
   ],
   imports: [
     BrowserModule,

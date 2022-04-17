@@ -2,6 +2,7 @@ import { ArtistService } from './../service/artist.service';
 import { ArtistListViewModel } from './../model/ArtistListViewModel';
 
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -12,44 +13,43 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ArtistCardComponent implements OnInit {
 
-  @Input() artist: ArtistListViewModel;
-  @Output() newItemEvent = new EventEmitter<string>();
+  @Input() artist;
+  @Output() c = new EventEmitter()
 
-  constructor(private albmuService:ArtistService) { }
+  constructor(private artistService: ArtistService, private router: Router) { }
   ngOnInit() {
+    console.log(this.artist)
+    this.detailsRote = ["/artistDetailes", this.artist?.id]
   }
+  detailsRote;
+  onFavirteClick(event) {
+    event.stopPropagation()
+    if (this.artistService.addLike) {
+      this.artist.likesCount++
+    }
+    else {
+      this.artist.likesCount--
+    }
 
+  }
 
   get likeColor() {
-
     if (this.artist.liked)
       return "warn";
-      else
+    else
       return "";
   }
-   onClick(){
-    console.log('clicked')
 
-  this.newItemEvent.emit
- 
-}
+  cardClick() {
 
-  addLike(){
-    if (this.artist.liked) {
-      this.albmuService.UnLike(this.artist).subscribe()
-      this.artist.likesCount--
-      if(this.artist.likesCount=0){
-
-      }
-      }
-
-      
-      
-      }
-
-      
+    this.c.emit("")
   }
-  
+
+
+
+
 
 
 }
+
+

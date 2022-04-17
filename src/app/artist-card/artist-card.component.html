@@ -1,4 +1,4 @@
-<mat-card ((click)="onClick()">
+<mat-card (click)="cardClick()" [routerLink]="detailsRote">
     <mat-card-title>{{artist.name}}</mat-card-title>
     <mat-card-actions>
         <button mat-icon-button>
@@ -11,46 +11,9 @@
             {{artist.albumsCount}}
         </button>
 
-        <button mat-icon-button color="{{likeColor}}" (click)="onClick()">
+        <button (click)="onFavirteClick($event)" mat-icon-button color="{{likeColor}}"> 
             <mat-icon>favorite</mat-icon>
             {{artist.likesCount}}
         </button>
     </mat-card-actions>
 </mat-card>
-
-<!-- 
-
-<div class="container" id="main-container" style="margin-top: 70px;">
-    <div class="row">
-        <div *ngFor="let artists of artist" class="col-md-12 col-xl-6 " (click)="onClick()">
-
-            <div class="card m-b-30">
-
-                <div class="card-body row">
-                    <div class="col-6">
-                        <p style="font-size: 20px; font-weight: bold;" mtInput>{{artists?.name}}</p>
-                    </div>
-
-                </div>
-
-                <div class="card-body">
-                    <div class="float-right btn-group btn-group-sm">
-                        <dvi class="icon">
-                            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                                <mat-icon>favorite</mat-icon>
-                            </button>
-                            <mat-icon style="margin-left:20px;">library_music</mat-icon> {{artists?.songsCount}}
-                            <mat-icon style="margin-left:20px;">album</mat-icon> {{artists?.albumsCount}}
-                        </dvi>
-                        <img routerLink class="img"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/800px-Instagram_logo_2016.svg.png" />
-
-                    </div>
-                </div>
-
-            </div>
-
-
-        </div>
-    </div>
-</div> -->
