@@ -1,10 +1,7 @@
-
-import { ArtistService } from './../service/artist.service';
-import { ActivatedRoute } from '@angular/router';
-
-import { ArtistListViewModel } from './../model/ArtistListViewModel';
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { ArtistViewModel } from './../model/ArtistViewModel';
+import { ArtistService } from './../service/artist.service';
 
 @Component({
   selector: 'app-artists-detailes',
@@ -12,17 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artists-detailes.component.scss']
 })
 export class ArtistsDetailesComponent implements OnInit {
-  artist:ArtistListViewModel
+
+  artist: ArtistViewModel
   id;
 
-  constructor(private router:ActivatedRoute,private artistService:ArtistService) { }
+  constructor(private router: ActivatedRoute, private artistService: ArtistService) { }
 
   ngOnInit(): void {
-    this.id= this.router.snapshot.params['id']
+    this.id = this.router.snapshot.params['id']
     console.log(this.id)
-    this.artistService.getArtistById(this.id).subscribe(a=>{
+    this.artistService.getArtistById(this.id).subscribe(a => {
       this.artist = a;
     });
-    }
+  }
 
 }
