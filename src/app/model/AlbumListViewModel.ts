@@ -7,5 +7,4 @@ export class AlbumsViewModel {
         about:	string
         releaseYear:string
          songsCount:number
-        
-   }
+        }

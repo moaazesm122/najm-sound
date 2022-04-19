@@ -29,7 +29,7 @@ export class ArtistCardComponent implements OnInit {
     if (!this.artist.liked) {
       this.artistService.addLike(this.artist.id).subscribe(res => {
         this.artist.likesCount++
-        this.likeColor=="warn"
+        this.artist.liked=true
       }
 
       );
@@ -39,10 +39,9 @@ export class ArtistCardComponent implements OnInit {
 
       this.artistService.UnLike(this.artist.id).subscribe(res => {
         this.artist.likesCount--
-        this.likeColor==""
+        this.artist.liked=false
     
-        
-      });
+        });
     }
   }
 

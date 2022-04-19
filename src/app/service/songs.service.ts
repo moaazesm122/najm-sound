@@ -9,22 +9,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SongsService {
-  url=environment.BaseUrl
-  constructor(private http:HttpClient) { }
+  url="https://localhost:5001/api/Songs"
+ constructor(private http:HttpClient) { }
+   
 
+ getSongById(id:number){
+     
+   return this.http.get<SongViewModel>(this.url+ '/' + id);
 
-  getSongById(id:number){
-      
-    return this.http.get<SongViewModel>(this.url+'Artists' + '/' + id);
+ }
 
-  }
-
-  addLike(id): Observable<any> {
-    return this.http.post<any>(this.url+'/Like/' + id,{})
-  }
-  UnLike(id): Observable<any> {
-    return this.http.post<any>(this.url+'/UnLike/'+ id,{})
-  }
+   addLike(id): Observable<any> {
+   return this.http.post<any>(this.url+'/Like/' + id,{})
+ }
+ UnLike(id): Observable<any> {
+   return this.http.post<any>(this.url+'/UnLike/'+ id,{})
+ }
 
 
 }
+

@@ -7,11 +7,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AlbumsService {
-     url=environment.BaseUrl
+  url="https://localhost:5001/api/Albums"
   constructor(private http:HttpClient) { }
-    getAlbumById(id:number){
+    
+
+  getAlbumById(id:number){
       
-        return this.http.get<AlbumsViewModel>(this.url+'Albums' + '/' + id);
-  
-    }
+    return this.http.get<AlbumsViewModel>(this.url+ '/' + id);
+
+  }
 }

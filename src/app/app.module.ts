@@ -17,6 +17,9 @@ import { ArtistsDetailesComponent } from './artists-detailes/artists-detailes.co
 import { CardAlbumComponent } from './card-album/card-album.component';
 import { CardSongComponent } from './card-song/card-song.component';
 
+import { GetSongByAlbumListsComponent } from './get-song-by-album-lists/get-song-by-album-lists.component';
+import { GetSongDetailesListsComponent } from './get-song-detailes-lists/get-song-detailes-lists.component';
+
 
 
 
@@ -30,7 +33,10 @@ import { CardSongComponent } from './card-song/card-song.component';
     ArtistListComponent,
     ArtistsDetailesComponent,
     CardSongComponent,
-    CardAlbumComponent
+    CardAlbumComponent,
+  
+    GetSongByAlbumListsComponent,
+       GetSongDetailesListsComponent
   ],
   imports: [
     BrowserModule,

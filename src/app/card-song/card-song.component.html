@@ -1,14 +1,17 @@
-<div>
+<div style="margin-top: 20px;" (click)="cardClick()" [routerLink]="SongDeatiels">
     <mat-card>
         <mat-card-title>{{song.name}}</mat-card-title>
-        <mat-card-title>{{song.artist}}</mat-card-title>
+        <mat-card-subtitle>{{song.artist}}</mat-card-subtitle>
         <mat-card-title>{{song.about}}</mat-card-title>
-        <mat-card-title>{{song.releaseYear}}</mat-card-title>
-        <mat-card-title>{{song.length}}</mat-card-title>
+
+        <mat-card-title>
+            <mat-icon>calendar_today</mat-icon> {{song.releaseYear}}</mat-card-title>
+
 
         <mat-card-actions>
-            <button mat-icon-button (click)="onFavirteClick()" mat-icon-button color="{{likeColor}}">
-            <mat-icon>favorite</mat-icon>
+            <mat-icon style="margin:10px;">query_builder</mat-icon> {{song.length}}
+            <button mat-icon-button (click)="onFavirteClick($event)" mat-icon-button color="{{likeColor}}">
+            <mat-icon style="margin:10px;margin-top:-3px">favorite</mat-icon>
          {{song.likesCount}}
         </button>
 

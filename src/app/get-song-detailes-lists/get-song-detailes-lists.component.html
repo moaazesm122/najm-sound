@@ -1,0 +1,9 @@
+<div class="row" *ngIf="artist">
+    <app-artist-card [artist]="artist" class="col-12 mb-3"></app-artist-card>
+
+    <div class="col-md-6 col-sm-12 mb-5 mt-10">
+
+        <app-card-song *ngFor="let song of artist.song" [song]="song"></app-card-song>
+
+    </div>
+</div>
